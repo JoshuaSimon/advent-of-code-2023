@@ -66,19 +66,16 @@ pub fn solve_part2(input_lines: impl Iterator<Item = io::Result<String>>) {
     for line in input_lines {
         match line {
             Ok(content) => {
-               // Check for matching digits
-                let mut digits_found: Vec<(usize, &str)> = digits
-                    .iter()
-                    .filter_map(|&digit| content.find(digit).map(|pos| (pos, digit)))
-                    .collect();
-
-                // Sort the vector based on the position in the content
-                digits_found.sort_by_key(|&(pos, _)| pos);
-
-                // Extract the digits from the sorted tuple vector
-                let digits_found: Vec<&str> = digits_found.into_iter().map(|(_, digit)| digit).collect();
+                // Check for matching digits
+                let mut digits_found: Vec<&str> = Vec::new();
+                for i in 0..content.len() {
+                    for digit in digits {
+                        if content[i..].starts_with(digit) {
+                            digits_found.push(digit);
+                        }
+                    }
+                }
                 
-                println!("{:?}", digits_found);
                 let mut first_digit = digits_found.first().unwrap();
                 let mut last_digit = digits_found.last().unwrap();
 
@@ -93,7 +90,7 @@ pub fn solve_part2(input_lines: impl Iterator<Item = io::Result<String>>) {
                 let line_number = format!("{}{}", first_digit, last_digit);
                 println!("{}", line_number);
                 sum += line_number.parse::<u32>().unwrap();  
-            
+                
             }
             Err(err) => {
                 eprintln!("Error reading line: {}", err);
