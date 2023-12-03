@@ -13,10 +13,10 @@ fn read_file_lines(filename: &str) -> Result<impl Iterator<Item = io::Result<Str
 
 /// Reads the inputs of the current day and solves the puzzle.
 fn main() {
-    let day: &str = "1";
+    let day: &str = "2";
     let filename: String = format!("inputs/day{}.txt", day);
     let input_lines_part1 = read_file_lines(&filename).expect("Error reading file");
     let input_lines_part2 = read_file_lines(&filename).expect("Error reading file");
-    days::day1::solve_part1(input_lines_part1);
-    days::day1::solve_part2(input_lines_part2);
+    days::day2::solve_part1(input_lines_part1);
+    days::day2::solve_part2(input_lines_part2);
 }
