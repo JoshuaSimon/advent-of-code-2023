@@ -52,7 +52,7 @@ pub fn solve_part1(input_lines: impl Iterator<Item = io::Result<String>>) {
     println!("Result of day 2 part 1 is: {}", game_sum - sum);
 }
 
-/// Parses the input of day 1 part 2 and solves the puzzle.
+/// Parses the input of day 2 part 2 and solves the puzzle.
 pub fn solve_part2(input_lines: impl Iterator<Item = io::Result<String>>) {
     let mut sum: u32 = 0;
     for line in input_lines {
